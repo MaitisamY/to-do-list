@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+<header>
+    <h1><a class="logo" href="/">PLANNER</a></h1>
+    <form action="/work" method="POST">
+        <input type="text" name="workTask" placeholder="What's in your mind?..." required>
+        <input type="submit" value="Create">
+    </form>
+    <a class="links" href="/">Today</a>
+    <a class="links active" href="/work">Work</a>
+</header>
+<main>
+    <% if(locals.task) { %> 
+      <% task.forEach((getOneTask) => { %>
+        <div class="newTask">
+            <% var randomNumber = Math.floor(Math.random() * 1000000) %>
+            <input class="check" id="taskCheck<%= randomNumber %>" type="checkbox">
+            &nbsp; 
+            <span class="changer" id="changer"><%= getOneTask %></span>
+        </div>
+        <% })} else { %>
+        <div class="newTaskIntro">
+            <h4>Welcome to work planner &#128400;</h4>
+            <ul>
+                <li>
+                    You can create as many tasks as you want.
+                </li>
+                <li>
+                    All of your work related tasks will show up here like boxes &nbsp; <span>&#128073;</span></div>
+                </li>
+            </ul>
+        <div class="newTask"><h4>task #001</h4></div>
+        <div class="newTask"><h4>task #002</h4></div>
+        <div class="newTask"><h4>task #003</h4></div>
+    <% } %>
+</main>
+<%- include("partials/footer.ejs") %>
