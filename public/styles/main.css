@@ -27,7 +27,7 @@ body {
 
 header {
     display: grid;
-    grid-template-columns: 15% 71% 10% 2% 2%;
+    grid-template-columns: 15% 71% 10% 4%;
     grid-template-rows: 100%;
     justify-content: center;
     align-content: center;
@@ -40,8 +40,8 @@ header {
     text-align: center;
 }
 
-form {
-    grid-area: 1 / 2 / 1 / 2;
+header form {
+    grid-area: 1 / 2 / 1 / 4;
     width: 100%;
     justify-content: center;
     justify-items: center;
@@ -149,9 +149,10 @@ main {
 }
 
 .newTask {
+    position: relative;
     margin: 20px;
-    width: 275px;
-    min-height: 250px;
+    width: 225px;
+    min-height: 200px;
     max-height: fit-content;
     word-wrap: break-word;
     padding: 10px 20px;
@@ -180,6 +181,82 @@ main {
     font-size: 20px;
 }
 
+.newTask .btn-edit {
+    text-decoration: none;
+    position: absolute;
+    bottom: 10px;
+    left: 45%;
+    color: #4c8492;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.newTask .btn-edit:hover {
+    color: #4c474d;
+}
+
+.newTask .btn-add {
+    text-decoration: none;
+    position: absolute;
+    bottom: 10px;
+    left: 60%;
+    color: #4c8492;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.newTask .btn-add:hover {
+    color: #4c474d;
+}
+
+.newTask .btn-cancel {
+    text-decoration: none;
+    position: absolute;
+    bottom: 10px;
+    left: 30%;
+    color: #4c8492;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.newTask .btn-cancel:hover {
+    color: #4c474d;
+}
+
+.newTask input[type=text] {
+    width: 90%;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #4c8492;
+     outline:none;
+    padding: 10px;
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.newTask input[type=text]:hover {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #4c8492;
+    outline: none;
+}
+
+.newTask input[type=text]:focus, 
+.newTask input[type=text]:active {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #4c474d;
+    outline: none;
+}
+
 footer {
     max-height: 10vh;
     text-align: center;
@@ -190,6 +267,10 @@ footer {
 
 .line-through {
     text-decoration: line-through;
+}
+
+#labelOne {
+    display: none;
 }
 
 @media screen and (max-width: 992px) {
@@ -211,7 +292,7 @@ footer {
         text-decoration: none;
     }
     
-    form {
+    header form {
         width: 100%;
         justify-content: center;
         justify-items: center;
