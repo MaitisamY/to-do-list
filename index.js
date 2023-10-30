@@ -3,10 +3,10 @@ import bodyParser from "body-parser";
 import pg from "pg";
 
 const db = new pg.Client({
-    user : "postgres",
-    host : "localhost",
-    database : "to-do-list",
-    password : "postgresAitisam",
+    user : "to_do_list_iro4_user",
+    host : "dpg-ckvo0qi37rbc739ik510-a",
+    database : "to_do_list_iro4",
+    password : "zUFwp300d292kxfbwRmS66RZvVkAzitC",
     port : 5432,
 });
 
