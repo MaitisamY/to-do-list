@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,3 +98,56 @@
     </script>
 </body>
 </html>
+=======
+<%- include("partials/header.ejs") %>
+<header>
+    <h1><a class="logo" href="/">PLANNER</a></h1>
+    <form action="/" method="POST">
+        <input type="text" name="task" placeholder="What's in your mind?..." required>
+        <input type="submit" value="Create">
+    </form>
+    <a class="links active" href="/">Today</a>
+    <a class="links" href="/work">Work</a>
+    <div class="responsive-links">
+        <ul>
+            <li><a class="active" href="/">Today</a></li>
+            <li><a href="/work">Work</a></li>
+        </ul>
+    </div>
+</header>
+<main>
+    <% const newDate = new Date() %>
+    <% const today = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full' }).format(newDate); %>
+    <% if(locals.tasklist !== '' && locals.dateToday == today) { %>
+        <div class="newTask">
+            <h4>Welcome to today's planner &#128400;</h4>
+            <h5>(<%= dateToday %>)</h5>
+        </div>
+        <% taskList.forEach((getOneTask) => { %>
+            <div class="newTask">
+                <% var randomNumber = Math.floor(Math.random() * 1000000) %>
+                <label id="label">
+                    <input id="<%= randomNumber %>" class="checkbox" type="checkbox"> &nbsp; <%= getOneTask %>
+                </label>
+            </div>
+            <% }) %>
+    <% } else { %>
+        <div class="newTaskIntro">
+            <h4>Welcome to today's planner &#128400;</h4>
+            <h5 class="text-center">(<%= dateToday %>)</h5>
+            <ul>
+                <li>
+                    You can create as many tasks as you want.
+                </li>
+                <li>
+                    All of your today's tasks will show up here like boxes &nbsp; <span>&#128073;</span> 
+                </li>
+            </ul>
+        </div>
+        <div class="newTask"><h4>task #001</h4></div>
+        <div class="newTask"><h4>task #002</h4></div>
+        <div class="newTask"><h4>task #003</h4></div>
+        <% } %>
+</main>
+<%- include("partials/footer.ejs") %>
+>>>>>>> e501e61e4e4cdd7b114494e98aa26f05f31ac808
