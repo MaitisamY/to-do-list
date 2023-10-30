@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-do List</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-    <link href="/styles/main.css" rel="stylesheet">
-</head>
-<body>
+<%- include("partials/header.ejs") %>
 <header>
     <h1><a class="logo" href="/">PLANNER</a></h1>
     <form action="/add" method="POST">
@@ -19,7 +9,7 @@
 <main>
     <% const newDate = new Date() %>
     <% const today = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full' }).format(newDate); %>
-    <% if(!locals.taskList) { %>
+    <% if(locals.taskList == '') { %>
         <div class="newTaskIntro">
             <h4>Welcome to your planner &#128400;</h4>
             <h5 class="text-center">(<%= today %>)</h5>
@@ -36,9 +26,8 @@
         <div class="newTask"><h4>task #002</h4></div>
     <% } else { %>
         <div class="newTask">
-            <h4>Your tasks</h4>
+            <h4>Your tasks &#128073;</h4>
             <h5>(<%= today %>)</h5>
-            <%= locals.message %>
         </div>
         <% taskList.forEach((task) => { %>
             <div class="newTask">
@@ -74,80 +63,9 @@
             <% }) %>
         <% } %>
 </main>
-
-<footer>
-    <p>Copyright &copy; PLANNER <%= new Date().getFullYear(); %></p>
-</footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="/jQuery/jQuery.js" type="text/javascript"></script>
-    <script>
-        function actions(id) {
-            document.getElementById("label" + id).setAttribute("hidden", true)
-            document.getElementById("edit" + id).setAttribute("hidden", true)
-            document.getElementById("cancel" + id).removeAttribute("hidden")
-            document.getElementById("update" + id).removeAttribute("hidden")
-            document.getElementById("modify" + id).removeAttribute("hidden")
-        }
-        function reverseAction(id) {
-            document.getElementById("modify" + id).setAttribute("hidden", true)
-            document.getElementById("update" + id).setAttribute("hidden", true)
-            document.getElementById("cancel" + id).setAttribute("hidden", true)
-            document.getElementById("label" + id).removeAttribute("hidden")
-            document.getElementById("edit" + id).removeAttribute("hidden")
-        }
-    </script>
-</body>
-</html>
-=======
-<%- include("partials/header.ejs") %>
-<header>
-    <h1><a class="logo" href="/">PLANNER</a></h1>
-    <form action="/" method="POST">
-        <input type="text" name="task" placeholder="What's in your mind?..." required>
-        <input type="submit" value="Create">
-    </form>
-    <a class="links active" href="/">Today</a>
-    <a class="links" href="/work">Work</a>
-    <div class="responsive-links">
-        <ul>
-            <li><a class="active" href="/">Today</a></li>
-            <li><a href="/work">Work</a></li>
-        </ul>
+<% if(locals.message) { %>
+    <div id="message" class="message">
+        <%= locals.message %>
     </div>
-</header>
-<main>
-    <% const newDate = new Date() %>
-    <% const today = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full' }).format(newDate); %>
-    <% if(locals.tasklist !== '' && locals.dateToday == today) { %>
-        <div class="newTask">
-            <h4>Welcome to today's planner &#128400;</h4>
-            <h5>(<%= dateToday %>)</h5>
-        </div>
-        <% taskList.forEach((getOneTask) => { %>
-            <div class="newTask">
-                <% var randomNumber = Math.floor(Math.random() * 1000000) %>
-                <label id="label">
-                    <input id="<%= randomNumber %>" class="checkbox" type="checkbox"> &nbsp; <%= getOneTask %>
-                </label>
-            </div>
-            <% }) %>
-    <% } else { %>
-        <div class="newTaskIntro">
-            <h4>Welcome to today's planner &#128400;</h4>
-            <h5 class="text-center">(<%= dateToday %>)</h5>
-            <ul>
-                <li>
-                    You can create as many tasks as you want.
-                </li>
-                <li>
-                    All of your today's tasks will show up here like boxes &nbsp; <span>&#128073;</span> 
-                </li>
-            </ul>
-        </div>
-        <div class="newTask"><h4>task #001</h4></div>
-        <div class="newTask"><h4>task #002</h4></div>
-        <div class="newTask"><h4>task #003</h4></div>
-        <% } %>
-</main>
+<% } %>  
 <%- include("partials/footer.ejs") %>
->>>>>>> e501e61e4e4cdd7b114494e98aa26f05f31ac808
